@@ -13,7 +13,13 @@ namespace TestRPN
 
         private void bt_Click(object sender, EventArgs e)
         {
-            tbOut.Text = (new RPNClass(tbIn.Text)).Calculate().ToString();
+            RPNCheckClass checkClass = new RPNCheckClass(new RPNCountClass(tbIn.Text));
+            string strwitherror = string.Empty;
+            tbOut.Text = checkClass.CheckInput(out strwitherror).ToString();
+            if (!string.IsNullOrEmpty(strwitherror))
+            {
+                MessageBox.Show(strwitherror);
+            }    
         }
     }
 }

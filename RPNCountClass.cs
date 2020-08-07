@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace RPNLib
 {
-    public class RPNClass
+    public class RPNCountClass
     {
-        private string _input;
-        public RPNClass(string input)
+        public string _input;
+        public RPNCountClass(string input)
         {
             _input = input;
         }
@@ -26,64 +26,64 @@ namespace RPNLib
             }
         }
 
-        private bool isDelimeter(char c)
+        public bool isDelimeter(char c)
         {
             return " =".IndexOf(c) != -1;
         }
 
-        private bool isOpenBreaker(char c)
+        public bool isOpenBreaker(char c)
         {
-            return c == '(';
+            return GetPriority(c) == 0;
         }
 
-        private bool isClosedBreaker(char c)
+        public bool isClosedBreaker(char c)
         {
-            return c == ')';
+            return GetPriority(c) == 1;
         }
 
-        private bool isOperator(char c)
+        public bool isOperator(char c)
         {
             return "+-/*^".IndexOf(c) != -1;
         }
 
         public double Calculate()
         {
-            return Counting(GetExpression(Correct(_input)));
+            return Counting(GetExpression(Correct()));
         }
 
-        private string Correct(string input)
+        private string Correct()
         {
             string normal = string.Empty;
-            for (int i = 0; i < input.Length; i++)
+            for (int i = 0; i < _input.Length; i++)
             {
                 if (i == 0)
                 {
-                    normal += input[i];
+                    normal += _input[i];
                 }
-                else if (input[i] == '.')
+                else if (_input[i] == '.')
                 {
                     normal += ',';
                 }
                 else
                 {
-                    char c = input[i - 1];
-                    if (isOpenBreaker(input[i]) && !isOperator(c))
+                    char c = _input[i - 1];
+                    if (isOpenBreaker(_input[i]) && !isOperator(c))
                     {
                         normal += '*';
-                        normal += input[i];
+                        normal += _input[i];
                     }
-                    else if (i != input.Length - 1)
+                    else if (i != _input.Length - 1)
                     {
-                        c = input[i + 1];
-                        normal += input[i];
-                        if (isClosedBreaker(input[i]) && !isOperator(c))
+                        c = _input[i + 1];
+                        normal += _input[i];
+                        if (isClosedBreaker(_input[i]) && !isOperator(c))
                         {
                             normal += '*';
                         }
                     }
                     else
                     {
-                        normal += input[i];
+                        normal += _input[i];
                     }
                 }
             }
