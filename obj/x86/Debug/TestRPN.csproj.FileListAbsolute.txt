@@ -21,3 +21,13 @@ D:\Projects and classes\RPN\TestRPN\obj\x86\Debug\TestRPN.csproj.CoreCompileInpu
 D:\Projects and classes\RPN\TestRPN\obj\x86\Debug\TestRPN.exe
 D:\Projects and classes\RPN\TestRPN\obj\x86\Debug\TestRPN.pdb
 D:\Projects and classes\RPN\TestRPN\obj\x86\Debug\TestRPN.csprojAssemblyReference.cache
+D:\Projects and classes\GItHubReposit\Reverse-Polish-Notation\bin\x86\Debug\TestRPN.exe.config
+D:\Projects and classes\GItHubReposit\Reverse-Polish-Notation\bin\x86\Debug\TestRPN.exe
+D:\Projects and classes\GItHubReposit\Reverse-Polish-Notation\bin\x86\Debug\TestRPN.pdb
+D:\Projects and classes\GItHubReposit\Reverse-Polish-Notation\obj\x86\Debug\TestRPN.csprojAssemblyReference.cache
+D:\Projects and classes\GItHubReposit\Reverse-Polish-Notation\obj\x86\Debug\TestRPN.MainWindow.resources
+D:\Projects and classes\GItHubReposit\Reverse-Polish-Notation\obj\x86\Debug\TestRPN.Properties.Resources.resources
+D:\Projects and classes\GItHubReposit\Reverse-Polish-Notation\obj\x86\Debug\TestRPN.csproj.GenerateResource.cache
+D:\Projects and classes\GItHubReposit\Reverse-Polish-Notation\obj\x86\Debug\TestRPN.csproj.CoreCompileInputs.cache
+D:\Projects and classes\GItHubReposit\Reverse-Polish-Notation\obj\x86\Debug\TestRPN.exe
+D:\Projects and classes\GItHubReposit\Reverse-Polish-Notation\obj\x86\Debug\TestRPN.pdb
