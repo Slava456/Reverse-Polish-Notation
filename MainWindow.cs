@@ -18,7 +18,7 @@ namespace TestRPN
             tbOut.Text = checkClass.CheckInput(out strwitherror).ToString();
             if (!string.IsNullOrEmpty(strwitherror))
             {
-                MessageBox.Show(strwitherror);
+                _= MessageBox.Show(strwitherror);
             }    
         }
     }
