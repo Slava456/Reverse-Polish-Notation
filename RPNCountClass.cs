@@ -67,7 +67,7 @@ namespace RPNLib
                 else
                 {
                     char c = _input[i - 1];
-                    if (isOpenBreaker(_input[i]) && !isOperator(c))
+                    if (isOpenBreaker(_input[i]) && !isOperator(c) && !isOpenBreaker(c))
                     {
                         normal += '*';
                         normal += _input[i];
@@ -76,7 +76,7 @@ namespace RPNLib
                     {
                         c = _input[i + 1];
                         normal += _input[i];
-                        if (isClosedBreaker(_input[i]) && !isOperator(c))
+                        if (isClosedBreaker(_input[i]) && !isOperator(c) && !isClosedBreaker(c))
                         {
                             normal += '*';
                         }
