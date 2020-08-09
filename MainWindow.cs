@@ -15,7 +15,7 @@ namespace TestRPN
         {
             RPNCheckClass checkClass = new RPNCheckClass(new RPNCountClass(tbIn.Text));
             string strwitherror = string.Empty;
-            tbOut.Text = checkClass.CheckInput(out strwitherror).ToString();
+            tbOut.Text = checkClass.CheckAndCountInput(out strwitherror).ToString();
             if (!string.IsNullOrEmpty(strwitherror))
             {
                 _= MessageBox.Show(strwitherror);
