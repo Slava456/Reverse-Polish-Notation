@@ -5,6 +5,18 @@ namespace RPNLib
 {
     public class RPNCountClass
     {
+        private const char _point = '.';
+        private const char _virgule = ',';
+        private const char _gap = ' ';
+        private const char _equality = '=';
+        private const char _openBreaker = '(';
+        private const char _closedBreaker = ')';
+        private const char _plus = '+';
+        private const char _minus = '-';
+        private const char _multiply = '*';
+        private const char _divis = '/';
+        private const char _exponent = '^';
+
         public string _input;
         public RPNCountClass(string input)
         {
@@ -15,35 +27,36 @@ namespace RPNLib
         {
             switch (s)
             {
-                case '(': return 0;
-                case ')': return 1;
-                case '+': return 2;
-                case '-': return 3;
-                case '*': return 4;
-                case '/': return 4;
-                case '^': return 5;
+                case _openBreaker: return 0;
+                case _closedBreaker: return 1;
+                case _plus: return 2;
+                case _minus: return 3;
+                case _multiply: return 4;
+                case _divis: return 4;
+                case _exponent: return 5;
                 default: return 6;
             }
         }
 
         public bool isDelimeter(char c)
         {
-            return " =".IndexOf(c) != -1;
+            return c == _gap || c == _equality;
         }
 
         public bool isOpenBreaker(char c)
         {
-            return GetPriority(c) == 0;
+            return c == _openBreaker;
         }
 
         public bool isClosedBreaker(char c)
         {
-            return GetPriority(c) == 1;
+            return c == _closedBreaker;
         }
 
         public bool isOperator(char c)
         {
-            return "+-/*^".IndexOf(c) != -1;
+            return c == _plus || c == _minus || c == _divis
+                   || c == _multiply || c == _exponent;
         }
 
         public double Calculate()
@@ -60,16 +73,16 @@ namespace RPNLib
                 {
                     normal += _input[i];
                 }
-                else if (_input[i] == '.')
+                else if (_input[i] == _point)
                 {
-                    normal += ',';
+                    normal += _virgule;
                 }
                 else
                 {
                     char c = _input[i - 1];
                     if (isOpenBreaker(_input[i]) && !isOperator(c) && !isOpenBreaker(c))
                     {
-                        normal += '*';
+                        normal += _multiply;
                         normal += _input[i];
                     }
                     else if (i != _input.Length - 1)
@@ -78,7 +91,7 @@ namespace RPNLib
                         normal += _input[i];
                         if (isClosedBreaker(_input[i]) && !isOperator(c) && !isClosedBreaker(c))
                         {
-                            normal += '*';
+                            normal += _multiply;
                         }
                     }
                     else
@@ -118,7 +131,7 @@ namespace RPNLib
                         }
                     }
 
-                    output += " "; //Дописываем после числа пробел в строку с выражением
+                    output += _gap.ToString(); //Дописываем после числа пробел в строку с выражением
                     i--; //Возвращаемся на один символ назад, к символу перед разделителем
                 }
                 //Если символ - оператор
@@ -134,7 +147,7 @@ namespace RPNLib
                         char s = operStack.Pop();
                         while (!isOpenBreaker(s))
                         {
-                            output += s.ToString() + ' ';
+                            output += s.ToString() + _gap.ToString();
                             s = operStack.Pop();
                         }
                     }
@@ -144,7 +157,7 @@ namespace RPNLib
                         {
                             if (GetPriority(input[i]) <= GetPriority(operStack.Peek())) //И если приоритет нашего оператора меньше или равен приоритету оператора на вершине стека
                             {
-                                output += operStack.Pop().ToString() + " "; //То добавляем последний оператор из стека в строку с выражением
+                                output += operStack.Pop().ToString() + _gap.ToString(); //То добавляем последний оператор из стека в строку с выражением
                             }
                         }
                         operStack.Push(char.Parse(input[i].ToString())); //Если стек пуст, или же приоритет оператора выше - добавляем операторов на вершину стека
@@ -154,7 +167,7 @@ namespace RPNLib
             //Когда прошли по всем символам, выкидываем из стека все оставшиеся там операторы в строку
             while (operStack.Count > 0)
             {
-                output += operStack.Pop() + " ";
+                output += operStack.Pop() + _gap.ToString();
             }
             return output; //Возвращаем выражение в постфиксной записи
         }
@@ -192,11 +205,11 @@ namespace RPNLib
 
                     switch (input[i]) //И производим над ними действие, согласно оператору
                     {
-                        case '+': result = b + a; break;
-                        case '-': result = b - a; break;
-                        case '*': result = b * a; break;
-                        case '/': result = b / a; break;
-                        case '^': result = double.Parse(Math.Pow(double.Parse(b.ToString()), double.Parse(a.ToString())).ToString()); break;
+                        case _plus: result = b + a; break;
+                        case _minus: result = b - a; break;
+                        case _multiply: result = b * a; break;
+                        case _divis: result = b / a; break;
+                        case _exponent: result = double.Parse(Math.Pow(double.Parse(b.ToString()), double.Parse(a.ToString())).ToString()); break;
                     }
                     temp.Push(result); //Результат вычисления записываем обратно в стек
                 }

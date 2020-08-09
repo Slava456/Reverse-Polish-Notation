@@ -9,7 +9,7 @@
             _countClass = countClass;
         }
 
-        public double CheckInput(out string messWithError)
+        public double CheckAndCountInput(out string messWithError)
         {
             string errorSymbol = string.Empty;
             bool res = true;
