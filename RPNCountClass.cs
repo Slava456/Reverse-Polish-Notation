@@ -131,7 +131,7 @@ namespace RPNLib
                         }
                     }
 
-                    output += " "; //Дописываем после числа пробел в строку с выражением
+                    output += _gap.ToString(); //Дописываем после числа пробел в строку с выражением
                     i--; //Возвращаемся на один символ назад, к символу перед разделителем
                 }
                 //Если символ - оператор
@@ -147,7 +147,7 @@ namespace RPNLib
                         char s = operStack.Pop();
                         while (!isOpenBreaker(s))
                         {
-                            output += s.ToString() + ' ';
+                            output += s.ToString() + _gap.ToString();
                             s = operStack.Pop();
                         }
                     }
@@ -157,7 +157,7 @@ namespace RPNLib
                         {
                             if (GetPriority(input[i]) <= GetPriority(operStack.Peek())) //И если приоритет нашего оператора меньше или равен приоритету оператора на вершине стека
                             {
-                                output += operStack.Pop().ToString() + " "; //То добавляем последний оператор из стека в строку с выражением
+                                output += operStack.Pop().ToString() + _gap.ToString(); //То добавляем последний оператор из стека в строку с выражением
                             }
                         }
                         operStack.Push(char.Parse(input[i].ToString())); //Если стек пуст, или же приоритет оператора выше - добавляем операторов на вершину стека
@@ -167,7 +167,7 @@ namespace RPNLib
             //Когда прошли по всем символам, выкидываем из стека все оставшиеся там операторы в строку
             while (operStack.Count > 0)
             {
-                output += operStack.Pop() + " ";
+                output += operStack.Pop() + _gap.ToString();
             }
             return output; //Возвращаем выражение в постфиксной записи
         }
