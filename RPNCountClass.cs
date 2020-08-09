@@ -5,6 +5,18 @@ namespace RPNLib
 {
     public class RPNCountClass
     {
+        private const char _point = '.';
+        private const char _virgule = ',';
+        private const char _gap = ' ';
+        private const char _equality = '=';
+        private const char _openBreaker = '(';
+        private const char _closedBreaker = ')';
+        private const char _plus = '+';
+        private const char _minus = '-';
+        private const char _multiply = '*';
+        private const char _divis = '/';
+        private const char _exponent = '^';
+
         public string _input;
         public RPNCountClass(string input)
         {
