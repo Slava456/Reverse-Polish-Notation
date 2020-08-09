@@ -40,22 +40,23 @@ namespace RPNLib
 
         public bool isDelimeter(char c)
         {
-            return " =".IndexOf(c) != -1;
+            return c == _gap || c == _equality;
         }
 
         public bool isOpenBreaker(char c)
         {
-            return GetPriority(c) == 0;
+            return c == _openBreaker;
         }
 
         public bool isClosedBreaker(char c)
         {
-            return GetPriority(c) == 1;
+            return c == _closedBreaker;
         }
 
         public bool isOperator(char c)
         {
-            return "+-/*^".IndexOf(c) != -1;
+            return c == _plus || c == _minus || c == _divis
+                   || c == _multiply || c == _exponent;
         }
 
         public double Calculate()
