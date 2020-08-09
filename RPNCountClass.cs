@@ -73,16 +73,16 @@ namespace RPNLib
                 {
                     normal += _input[i];
                 }
-                else if (_input[i] == '.')
+                else if (_input[i] == _point)
                 {
-                    normal += ',';
+                    normal += _virgule;
                 }
                 else
                 {
                     char c = _input[i - 1];
                     if (isOpenBreaker(_input[i]) && !isOperator(c) && !isOpenBreaker(c))
                     {
-                        normal += '*';
+                        normal += _multiply;
                         normal += _input[i];
                     }
                     else if (i != _input.Length - 1)
@@ -91,7 +91,7 @@ namespace RPNLib
                         normal += _input[i];
                         if (isClosedBreaker(_input[i]) && !isOperator(c) && !isClosedBreaker(c))
                         {
-                            normal += '*';
+                            normal += _multiply;
                         }
                     }
                     else
