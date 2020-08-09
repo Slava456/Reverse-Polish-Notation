@@ -205,11 +205,11 @@ namespace RPNLib
 
                     switch (input[i]) //И производим над ними действие, согласно оператору
                     {
-                        case '+': result = b + a; break;
-                        case '-': result = b - a; break;
-                        case '*': result = b * a; break;
-                        case '/': result = b / a; break;
-                        case '^': result = double.Parse(Math.Pow(double.Parse(b.ToString()), double.Parse(a.ToString())).ToString()); break;
+                        case _plus: result = b + a; break;
+                        case _minus: result = b - a; break;
+                        case _multiply: result = b * a; break;
+                        case _divis: result = b / a; break;
+                        case _exponent: result = double.Parse(Math.Pow(double.Parse(b.ToString()), double.Parse(a.ToString())).ToString()); break;
                     }
                     temp.Push(result); //Результат вычисления записываем обратно в стек
                 }
