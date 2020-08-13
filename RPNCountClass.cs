@@ -67,13 +67,10 @@ namespace RPNLib
         private string Correct()
         {
             string normal = string.Empty;
-            for (int i = 0; i < _input.Length; i++)
+            normal += _input[0];
+            for (int i = 1; i < _input.Length; i++)
             {
-                if (i == 0)
-                {
-                    normal += _input[i];
-                }
-                else if (_input[i] == _point)
+                if (_input[i] == _point)
                 {
                     normal += _virgule;
                 }
